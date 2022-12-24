@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -17,7 +16,7 @@ public class PriceController {
     @Autowired
     private VentaServiceImpl ventaService;
 
-    @GetMapping( "/consultar" )
+    @GetMapping( "/consult" )
     public ResponseEntity<Price> consultar( @RequestBody Date fecha, @RequestBody long id, @RequestBody long brandId ) {
         return ResponseEntity.ok( ventaService.consultar(  fecha, id, brandId ) );
     }
@@ -29,11 +28,10 @@ public class PriceController {
 
     @GetMapping( "/{id}" )
     public ResponseEntity<Price> get( @PathVariable int id ) {
-
         return ResponseEntity.ok( ventaService.get( id ) );
     }
 
-    @GetMapping()
+    @GetMapping("/getAll")
     public List<Price> findAll() {
         return ventaService.findAll();
     }

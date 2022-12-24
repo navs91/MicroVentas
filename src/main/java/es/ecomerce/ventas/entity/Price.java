@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Comparator;
 import java.util.Date;
 
 @Entity
@@ -15,17 +14,15 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table( name = "Precios" )
-public class Price implements Comparator {
+public class Price {
 
     @Column( name = "BRAND_ID" )
     private long brandId;
 
     @Column( name = "START_DATE" )
-    @Temporal(TemporalType.TIMESTAMP)
     private Date startDate;
 
     @Column( name = "END_DATE" )
-    @Temporal(TemporalType.TIMESTAMP)
     private Date endDate;
 
     @Id
@@ -53,10 +50,5 @@ public class Price implements Comparator {
                 ", price=" + price +
                 ", currency='" + currency + '\'' +
                 '}';
-    }
-
-    @Override
-    public int compare(Object o1, Object o2) {
-        return 0;
     }
 }
